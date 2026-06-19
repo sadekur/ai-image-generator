@@ -12,6 +12,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  height: 100%;
+  position: absolute;
   background-color: ${(theme) => theme.card};
   padding: 20px;
   border-radius: 10px;
