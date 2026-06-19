@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from 'styled-components';
-import {darkTheme} from './theme';
+import { darkTheme } from './utils/themes';
 
 const Container = styled.div`
   height: 100%;
@@ -8,15 +8,17 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(theme) => theme.bg};
-  // color: ${(theme) => theme.text};
+  color: ${(theme) => theme.text_primary};
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   position: relative;
-  background-color: ${(theme) => theme.card};
-  padding: 20px;
-  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex: 3;
 `;
 function App() {
   return <ThemeProvider theme={darkTheme}>
