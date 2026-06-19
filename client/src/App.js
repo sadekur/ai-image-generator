@@ -26,8 +26,11 @@ function App() {
   return <ThemeProvider theme={darkTheme}>
     <Container>
       <Wrapper>
-        <Home />
-        <CreatePost />
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create-post" element={<CreatePost />} />
+        </Routes>
       </Wrapper>
     </Container>
   </ThemeProvider>;
