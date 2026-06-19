@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme } from './utils/Themes';
 import Home from './pages/Home';
+import CreatePost from './pages/CreatePost';
 
 const Container = styled.div`
   width: 100%;
@@ -26,6 +27,7 @@ function App() {
     <Container>
       <Wrapper>
         <Home />
+        <CreatePost />
       </Wrapper>
     </Container>
   </ThemeProvider>;
