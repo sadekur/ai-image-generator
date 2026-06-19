@@ -30,7 +30,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/post" element={<CreatePost />} />
           </Routes>
         </BrowserRouter>
       </Wrapper>
