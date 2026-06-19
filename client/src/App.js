@@ -1,5 +1,6 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme } from './utils/Themes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 
@@ -27,10 +28,11 @@ function App() {
     <Container>
       <Wrapper>
         <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create-post" element={<CreatePost />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-post" element={<CreatePost />} />
+          </Routes>
+        </BrowserRouter>
       </Wrapper>
     </Container>
   </ThemeProvider>;
