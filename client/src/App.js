@@ -17,9 +17,8 @@ const Wrapper = styled.div`
   height: 100%;
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  justify-content: space-between;
   flex: 3;
 `;
 function App() {
