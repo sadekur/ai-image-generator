@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(theme) => theme.bg};
-  color: ${(theme) => theme.text};
+  // color: ${(theme) => theme.text};
 `;
 
 const Wrapper = styled.div`
