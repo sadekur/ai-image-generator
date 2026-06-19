@@ -1,24 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import Button from "./buttons/button";
 import { useLocation, useNavigate } from "react-router";
 import { AddRounded, WebRounded } from "@mui/icons-material";
-
-const Container = styled.div`
-  flex: 1;
-  background: ${({ theme }) => theme.navbar};
-  color: ${({ theme }) => theme.menu_primary_text};
-  font-weight: bold;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  @media only screen and (max-width: 600px) {
-    padding: 10px 12px;
-  }
-`;
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -34,7 +17,7 @@ const Navbar = () => {
   };
   console.log(path);
   return (
-    <Container>
+    <div className="flex-1 bg-[var(--navbar)] text-[var(--menu_primary_text)] font-bold text-[22px] flex items-center justify-between px-[50px] py-[14px] shadow-[0_0_10px_rgba(0,0,0,0.15)] max-[600px]:px-[12px] max-[600px]:py-[10px]">
       GemAI
       {path[1] === "post" ? (
         <Button
@@ -50,7 +33,7 @@ const Navbar = () => {
           onClick={gotoCreatePost}
         />
       )}
-    </Container>
+    </div>
   );
 };
 
