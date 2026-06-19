@@ -3,16 +3,14 @@ import { darkTheme } from './utils/Themes';
 import Home from './pages/Home';
 
 const Container = styled.div`
-  height: 100%;
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.bg};
+  background: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
   overflow-x: hidden;
   overflow-y: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 `;
 
 const Wrapper = styled.div`
