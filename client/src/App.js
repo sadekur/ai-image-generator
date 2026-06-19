@@ -1,6 +1,8 @@
+import styled from 'styled-components';
+import {darkTheme} from './theme';
 function App() {
   return (
-    <div className="App">
+    <div>
       Hello World!
     </div>
   );
