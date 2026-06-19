@@ -1,5 +1,5 @@
 import styled, { ThemeProvider } from 'styled-components';
-import { darkTheme } from './utils/themes';
+import { darkTheme } from './utils/Themes';
 
 const Container = styled.div`
   height: 100%;
