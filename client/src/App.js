@@ -8,11 +8,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(theme) => theme.bg};
-  color: ${(theme) => theme.text_primary};
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text_primary};
   overflow-x: hidden;
   overflow-y: hidden;
-  transeition: all 0.3s ease;
+  transition: all 0.3s ease;
 `;
 
 const Wrapper = styled.div`
