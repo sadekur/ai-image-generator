@@ -9,6 +9,9 @@ const Container = styled.div`
   align-items: center;
   background-color: ${(theme) => theme.bg};
   color: ${(theme) => theme.text_primary};
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transeition: all 0.3s ease;
 `;
 
 const Wrapper = styled.div`
