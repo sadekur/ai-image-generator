@@ -1,20 +1,46 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import CreatePost from './pages/CreatePost';
-import Navbar from './components/Navbar';
+import styled, { ThemeProvider } from "styled-components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import CreatePost from "./pages/CreatePost";
+import { darkTheme } from "./utils/Themes";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text_primary};
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: all 0.2s ease;
+`;
+
+const Wrapper = styled.div`
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 3;
+`;
 
 function App() {
-  return <div data-theme="dark" className="w-full h-full flex bg-[var(--bg)] text-[var(--text_primary)] overflow-x-hidden overflow-y-hidden transition-all duration-200 ease">
-    <div className="h-full relative flex flex-col justify-between flex-[3]">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/post" element={<CreatePost />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  </div>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <Container>
+        <Wrapper>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/post" exact element={<CreatePost />} />
+            </Routes>
+          </BrowserRouter>
+        </Wrapper>
+      </Container>
+    </ThemeProvider>
+  );
 }
 
 export default App;
