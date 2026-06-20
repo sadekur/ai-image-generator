@@ -1,35 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import GenerateImageForm from "../components/cards/GenerateImageForm";
 import GeneratedImageCard from "../components/cards/GeneratedImageCard ";
-
-const Container = styled.div`
-  height: 100%;
-  overflow-y: scroll;
-  background: ${({ theme }) => theme.bg};
-  padding: 30px 30px;
-  padding-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  @media (max-width: 768px) {
-    padding: 6px 10px;
-  }
-`;
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: fit-content;
-  max-width: 1200px;
-  gap: 8%;
-  display: flex;
-  justify-content: center;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
 
 const CreatePost = () => {
   const [generateImageLoading, setGenerateImageLoading] = useState(false);
@@ -40,8 +11,8 @@ const CreatePost = () => {
     photo: "",
   });
   return (
-    <Container>
-      <Wrapper>
+    <div className="h-full overflow-y-scroll bg-[var(--bg)] p-[30px] pb-[50px] flex flex-col items-center justify-center gap-5 max-[768px]:px-[10px] max-[768px]:py-[6px]">
+      <div className="w-full h-fit max-w-[1200px] gap-[8%] flex justify-center max-[768px]:flex-col">
         <GenerateImageForm
           post={post}
           setPost={setPost}
@@ -51,8 +22,8 @@ const CreatePost = () => {
           setCreatePostLoading={setCreatePostLoading}
         />
         <GeneratedImageCard src={post?.photo} loading={generateImageLoading} />
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   );
 };
 
