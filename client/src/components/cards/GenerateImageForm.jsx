@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "./button";
 import TextInput from "./TextInput";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
-import { CreatePost, GenerateAIImage } from "../api";
+import CreatePost from "../../pages/CreatePost";
 
 const Form = styled.div`
   flex: 1;
