@@ -1,14 +1,39 @@
+import { SearchOutlined } from "@mui/icons-material";
 import React from "react";
+import styled from "styled-components";
+
+const SearchBarContainer = styled.div`
+  max-width: 550px;
+  display: flex;
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.text_secondary + 90};
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 12px 16px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  color: ${({ theme }) => theme.text_secondary};
+`;
 
 const SearchBar = ({ search, handleChange }) => {
   return (
-    <input
-      type="text"
-      value={search}
-      onChange={handleChange}
-      placeholder="Search posts..."
-      className="w-full max-w-[600px] px-4 py-2 rounded-lg border border-[var(--text_secondary)]/30 bg-[var(--bgLight)] text-[var(--text_primary)] outline-none focus:border-[var(--primary)] transition-colors duration-200"
-    />
+    <SearchBarContainer>
+      <SearchOutlined sx={{ color: "inherit" }} />
+      <input
+        type="text"
+        placeholder="Search with prompt or name. . ."
+        style={{
+          border: "none",
+          outline: "none",
+          width: "100%",
+          background: "inherit",
+          color: "inherit",
+        }}
+        value={search}
+        onChange={(e) => handleChange(e)}
+      />
+    </SearchBarContainer>
   );
 };
 
