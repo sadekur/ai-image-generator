@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import GenerateImageForm from "../components/GenerateImageForm";
 import GeneratedImageCard from "../components/GeneratedImageCard";
 
 const Container = styled.div`
