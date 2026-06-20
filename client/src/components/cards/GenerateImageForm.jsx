@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Button from "./button";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
 import { CreatePost, GenerateImageFromPrompt } from "../../api";
 import TextInput from "../Imput/TextInput";
+import { Button } from "@mui/material";
 
 
 const Form = styled.div`
