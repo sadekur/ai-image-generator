@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "./button";
 import TextInput from "./TextInput";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
-import { CreatePost, GenerateAIImage } from "../../api";
+import { CreatePost, GenerateImageFromPrompt } from "../../api";
 
 
 const Form = styled.div`
@@ -56,7 +56,7 @@ const GenerateImageForm = ({
   const [error, setError] = useState("");
   const generateImageFun = async () => {
     setGenerateImageLoading(true);
-    await GenerateAIImage({ prompt: post.prompt })
+    await GenerateImageFromPrompt({ prompt: post.prompt })
       .then((res) => {
         setPost({
           ...post,
