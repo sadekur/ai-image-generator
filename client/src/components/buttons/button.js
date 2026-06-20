@@ -1,5 +1,52 @@
 import { CircularProgress } from "@mui/material";
 import React from "react";
+import styled from "styled-components";
+
+const Button = styled.div`
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: min-content;
+  padding: 10px 24px;
+  @media (max-width: 600px) {
+    padding: 8px 12px;
+  }
+
+  ${({ type, theme }) =>
+    type === "secondary"
+      ? `
+  background: ${theme.secondary};
+  `
+      : `
+  background: ${theme.primary};
+`}
+
+  ${({ isDisabled }) =>
+    isDisabled &&
+    `
+  opacity: 0.4;
+  cursor: not-allowed;
+
+  `}
+  ${({ isLoading }) =>
+    isLoading &&
+    `
+    opacity: 0.8;
+  cursor: not-allowed;
+`}
+${({ flex }) =>
+    flex &&
+    `
+    flex: 1;
+`}
+`;
 
 const button = ({
   text,
@@ -12,9 +59,12 @@ const button = ({
   flex,
 }) => {
   return (
-    <div
+    <Button
       onClick={() => !isDisabled && !isLoading && onClick()}
-      className={`rounded-[10px] text-white text-sm font-semibold cursor-pointer transition-all duration-300 ease flex items-center justify-center gap-[6px] h-min px-[24px] py-[10px] max-[600px]:px-[12px] max-[600px]:py-[8px] ${type === "secondary" ? "bg-[var(--secondary)]" : "bg-[var(--primary)]"} ${isDisabled ? "opacity-40 cursor-not-allowed" : ""} ${isLoading ? "opacity-80 cursor-not-allowed" : ""} ${flex ? "flex-1" : ""}`}
+      isDisabled={isDisabled}
+      type={type}
+      isLoading={isLoading}
+      flex={flex}
     >
       {isLoading && (
         <CircularProgress
@@ -25,7 +75,7 @@ const button = ({
       {text}
       {isLoading && <> . . .</>}
       {rightIcon}
-    </div>
+    </Button>
   );
 };
 
