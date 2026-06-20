@@ -4,7 +4,6 @@ import SearchBar from "../components/SearchBar";
 import ImageCard from "../components/cards/ImageCard";
 import { GetPosts } from "../api";
 import { CircularProgress } from "@mui/material";
-import Button from "../components/Button";
 
 const Container = styled.div`
   height: 100%;
