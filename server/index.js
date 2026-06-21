@@ -25,15 +25,13 @@ app.get('/', async (req, res) => {
 
 const startServer = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
         app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
     } catch (error) {
         console.log(error);
     }
 };
+
+startServer();
 
 // app.post('/', async (req, res) => {
 //     try {
@@ -53,5 +51,3 @@ const startServer = async () => {
 //         res.status(500).send(error?.response.data.error.message);
 //     }
 // });
-
-app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
