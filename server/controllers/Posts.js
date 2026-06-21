@@ -26,7 +26,7 @@ export const createPost = async (req, res, next) => {
     try {
         const { name, prompt, photo } = req.body;
         const post = await Post.create({ name, prompt, photo });
-        const photoUrl = "";
+        const photoUrl = await cloudinary.uploader.upload(photo, { folder: 'ai-image-generator' });
         const newPost = await Post.create({ name, prompt, photo: photoUrl });
         res.status(201).json({ success: true, data: newPost });
     } catch (error) {
