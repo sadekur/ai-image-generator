@@ -111,7 +111,7 @@ const GenerateImageForm = ({
       </Body>
       <Actions>
         <Button
-          text="Generate Idsadsamage"
+          text="Generate Image"
           flex
           leftIcon={<AutoAwesome />}
           isLoading={generateImageLoading}

@@ -27,15 +27,11 @@ const button = ({
         ${flex ? "flex-1" : ""}
       `}
     >
-      {isLoading && (
-        <CircularProgress
-          className="w-[18px] h-[18px] text-inherit"
-        />
+      {isLoading ? (
+        <CircularProgress className="w-[18px] h-[18px] text-inherit" />
+      ) : (
+        <>{leftIcon}{text}{rightIcon}</>
       )}
-      {leftIcon}
-      {text}
-      {isLoading && <> . . .</>}
-      {rightIcon}
     </button>
   );
 };
