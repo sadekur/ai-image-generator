@@ -28,10 +28,13 @@ const connectDB = async () => {
     mongoose.set('strictQuery', true);
     mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log('Connected to MongoDB'))
-        .catch((error) => console.log(error));
+        .catch((error) => { 
+            console.log('Error connecting to MongoDB:', error);
+            console.log(error) });
 };
 const startServer = async () => {
     try {
+        await connectDB();
         app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
     } catch (error) {
         console.log(error);
