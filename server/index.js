@@ -23,6 +23,19 @@ app.get('/', async (req, res) => {
     })
 });
 
+// Connect to MongoDB
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_URL, {    
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB connected');
+    } catch (error) {
+        console.error('MongoDB connection error:', error.message);
+        process.exit(1);
+    }
+};
 const startServer = async () => {
     try {
         app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
