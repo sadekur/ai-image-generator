@@ -11,6 +11,12 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Something went wrong';
+    return res.status(statusCode).json({ success: false, status: statusCode, message });
+});
+
 app.get('/', async (req, res) => {
     res.status(200).send({
         message: 'Hello from CodeX!'
