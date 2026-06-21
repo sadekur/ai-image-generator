@@ -1,5 +1,6 @@
 import Post from '../models/Post.js';
 import * as dotenv from 'dotenv';
+import { createError } from '../error.js';
 
 dotenv.config();
 
@@ -8,6 +9,7 @@ export const getPosts = async (req, res) => {
         const posts = await Post.find();
         res.status(200).json(posts);
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        const err = createError(404, error.message);
+        res.status(err.status).json({ message: err.message });
     }
 }
