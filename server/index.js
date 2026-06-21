@@ -2,6 +2,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import express from 'express';
 import * as dotenv from 'dotenv';
+import postRoutes from './routes/Posts.js';
 // import { Configuration, OpenAIApi } from 'openai';
 
 dotenv.config();
@@ -16,6 +17,8 @@ app.use((err, req, res, next) => {
     const message = err.message || 'Something went wrong';
     return res.status(statusCode).json({ success: false, status: statusCode, message });
 });
+
+app.use('/api/v1/posts', postRoutes);
 
 app.get('/', async (req, res) => {
     res.status(200).send({
