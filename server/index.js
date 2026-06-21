@@ -25,16 +25,10 @@ app.get('/', async (req, res) => {
 
 // Connect to MongoDB
 const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URL, {    
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('MongoDB connected');
-    } catch (error) {
-        console.error('MongoDB connection error:', error.message);
-        process.exit(1);
-    }
+    mongoose.set('strictQuery', true);
+    mongoose.connect(process.env.MONGODB_URL)
+    .then(() => console.log('Connected to MongoDB'))
+        .catch((error) => console.log(error));
 };
 const startServer = async () => {
     try {
