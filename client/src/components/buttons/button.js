@@ -29,7 +29,7 @@ const button = ({
     >
       {isLoading && (
         <CircularProgress
-          style={{ width: "18px", height: "18px", color: "inherit" }}
+          className="w-[18px] h-[18px] text-inherit"
         />
       )}
       {leftIcon}
