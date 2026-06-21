@@ -19,7 +19,8 @@ export const createPost = async (req, res, next) => {
     try {
         const { name, prompt, photo } = req.body;
         const post = await Post.create({ name, prompt, photo });
-        res.status(201).json({ success: true, data: post });
+        const photoUrl = "";
+        const nextPost = await Post.create({ name, prompt, photo: photoUrl });
     } catch (error) {
         next(createError(
             error.status,
