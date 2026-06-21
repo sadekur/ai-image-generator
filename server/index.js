@@ -23,23 +23,35 @@ app.get('/', async (req, res) => {
     })
 });
 
-app.post('/', async (req, res) => {
+const startServer = async () => {
     try {
-        const prompt = req.body.prompt;
-
-        const response = await openai.createImage({
-            prompt,
-            n: 1,
-            size: '1024x1024',
-            response_format: 'b64_json',
+        await mongoose.connect(process.env.MONGODB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
         });
-
-        const image = response.data.data[0].b64_json;
-        res.status(200).send({ photo: image });
+        app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
     } catch (error) {
-        console.error(error);
-        res.status(500).send(error?.response.data.error.message);
+        console.log(error);
     }
-});
+};
+
+// app.post('/', async (req, res) => {
+//     try {
+//         const prompt = req.body.prompt;
+
+//         const response = await openai.createImage({
+//             prompt,
+//             n: 1,
+//             size: '1024x1024',
+//             response_format: 'b64_json',
+//         });
+
+//         const image = response.data.data[0].b64_json;
+//         res.status(200).send({ photo: image });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send(error?.response.data.error.message);
+//     }
+// });
 
 app.listen(8080, () => console.log('Server has started on port http://localhost:8080'));
