@@ -14,3 +14,15 @@ export const getPosts = async (req, res, next) => {
             error?.response?.data?.error?.message || 500, error.message || 'Failed to fetch posts'));
     }
 }
+
+export const createPost = async (req, res, next) => {
+    try {
+        const { name, prompt, photo } = req.body;
+        const post = await Post.create({ name, prompt, photo });
+        res.status(201).json({ success: true, data: post });
+    } catch (error) {
+        next(createError(
+            error.status,
+            error?.response?.data?.error?.message || 500, error.message || 'Failed to create post'));
+    }
+}
