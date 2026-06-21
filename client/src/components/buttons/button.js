@@ -1,7 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import React from "react";
 
-const button = ({
+const Button = ({
   text,
   isLoading,
   isDisabled,
@@ -28,13 +28,13 @@ const button = ({
       `}
     >
       {isLoading && (
-        <CircularProgress className="w-[18px] h-[18px] text-inherit" />
+        <CircularProgress size={18} thickness={5} sx={{ color: "inherit" }} />
       )}
-      {leftIcon}
+      {!isLoading && leftIcon}
       {text}
       {!isLoading && rightIcon}
     </button>
   );
 };
 
-export default button;
+export default Button;
