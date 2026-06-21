@@ -18,7 +18,7 @@ app.use((err, req, res, next) => {
     return res.status(statusCode).json({ success: false, status: statusCode, message });
 });
 
-app.use('/api/v1/posts', postRoutes);
+app.use('/api/posts', postRoutes);
 
 app.get('/', async (req, res) => {
     res.status(200).send({
