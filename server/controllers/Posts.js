@@ -4,12 +4,13 @@ import { createError } from '../error.js';
 
 dotenv.config();
 
-export const getPosts = async (req, res) => {
+export const getPosts = async (req, res, next) => {
     try {
         const posts = await Post.find();
-        res.status(200).json(posts);
+        res.status(200).json({ success: true, data: posts });
     } catch (error) {
-        const err = createError(404, error.message);
-        res.status(err.status).json({ message: err.message });
+        next(createError(
+            error.status,
+            error?.response?.data?.error?.message || 500, error.message || 'Failed to fetch posts'));
     }
 }
