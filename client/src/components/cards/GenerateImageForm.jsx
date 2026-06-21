@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
 import { CreatePost, GenerateImageFromPrompt } from "../../api";
 import TextInput from "../Imput/TextInput";
-import { Button } from "@mui/material";
+import Button from "../buttons/button";
 
 
 const Form = styled.div`
@@ -111,7 +111,7 @@ const GenerateImageForm = ({
       </Body>
       <Actions>
         <Button
-          text="Generate Image"
+          text="Generate Idsadsamage"
           flex
           leftIcon={<AutoAwesome />}
           isLoading={generateImageLoading}
