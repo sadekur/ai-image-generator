@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 import express from 'express';
 import * as dotenv from 'dotenv';
 import postRoutes from './routes/Posts.js';
-// import { Configuration, OpenAIApi } from 'openai';
+import GenerateImageRoutes from './routes/GenerateImage.js';
+
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/posts', postRoutes);
+app.use('/api/generateImage', GenerateImageRoutes);
 
 
 app.use((err, req, res, next) => {
