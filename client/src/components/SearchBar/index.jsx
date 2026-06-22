@@ -1,39 +1,18 @@
 import { SearchOutlined } from "@mui/icons-material";
 import React from "react";
-import styled from "styled-components";
-
-const SearchBarContainer = styled.div`
-  max-width: 550px;
-  display: flex;
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.text_secondary + 90};
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 12px 16px;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 6px;
-  color: ${({ theme }) => theme.text_secondary};
-`;
 
 const SearchBar = ({ search, handleChange }) => {
   return (
-    <SearchBarContainer>
+    <div className="max-w-[550px] flex w-full border border-solid border-[rgba(var(--text_secondary-rgb),0.56)] rounded-[8px] cursor-pointer px-4 py-3 justify-start items-center gap-1.5 text-[var(--text_secondary)]">
       <SearchOutlined sx={{ color: "inherit" }} />
       <input
         type="text"
         placeholder="Search with prompt or name. . ."
-        style={{
-          border: "none",
-          outline: "none",
-          width: "100%",
-          background: "inherit",
-          color: "inherit",
-        }}
+        className="border-none outline-none w-full bg-transparent text-inherit"
         value={search}
         onChange={(e) => handleChange(e)}
       />
-    </SearchBarContainer>
+    </div>
   );
 };
 
