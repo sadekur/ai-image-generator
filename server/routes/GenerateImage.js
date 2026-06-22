@@ -1,8 +1,8 @@
 import express from "express";
-import { generateAIImage } from "../controllers/GenerateAIImage.js";
+import { generateImage } from "../controllers/GenerateAIImage.js";
 
 const router = express.Router();
 
-router.post("/", generateAIImage);
+router.post("/", generateImage);
 
 export default router;
