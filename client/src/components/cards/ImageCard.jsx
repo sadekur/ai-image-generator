@@ -52,6 +52,11 @@ const Prompt = styled.div`
   font-weight: 400;
   font-size: 15px;
   color: ${({ theme }) => theme.white};
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const Author = styled.div`
   font-weight: 600;
