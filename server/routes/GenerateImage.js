@@ -1,9 +1,8 @@
 import express from "express";
-import { getPosts as getAllPosts, createPost } from "../controllers/Posts.js";
+import { generateAIImage } from "../controllers/GenerateAIImage.js";
 
 const router = express.Router();
 
-router.get("/", getAllPosts);
-router.post("/", createPost);
+router.get("/", generateAIImage);
 
 export default router;
