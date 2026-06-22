@@ -1,48 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { AutoAwesome, CreateRounded } from "@mui/icons-material";
 import { CreatePost, GenerateImageFromPrompt } from "../../api";
 import TextInput from "../Imput/TextInput";
 import Button from "../buttons/button";
 
-
-const Form = styled.div`
-  flex: 1;
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 9%;
-  justify-content: center;
-`;
-const Top = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-`;
-const Title = styled.div`
-  font-size: 28px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text_primary};
-`;
-const Desc = styled.div`
-  font-size: 17px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary};
-`;
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  font-size: 12px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary};
-`;
-const Actions = styled.div`
-  flex: 1;
-  display: flex;
-  gap: 8px;
-`;
 
 const GenerateImageForm = ({
   post,
@@ -82,14 +44,14 @@ const GenerateImageForm = ({
       });
   };
   return (
-    <Form>
-      <Top>
-        <Title>Generate Image with prompt</Title>
-        <Desc>
+    <div className="flex-1 flex flex-col justify-center px-5 py-4 gap-[9%]">
+      <div className="flex flex-col gap-1.5">
+        <div className="text-[28px] font-medium text-[var(--text_primary)]">Generate Image with prompt</div>
+        <div className="text-[17px] font-normal text-[var(--text_secondary)]">
           Write your prompt according to the image you want to generate!
-        </Desc>
-      </Top>
-      <Body>
+        </div>
+      </div>
+      <div className="flex flex-col gap-[18px] text-xs font-normal text-[var(--text_secondary)]">
         <TextInput
           label="Author"
           placeholder="Enter your name.."
@@ -108,8 +70,8 @@ const GenerateImageForm = ({
         />
         {error && <div style={{ color: "red" }}>{error}</div>}
         ** You can post the AI Generated Image to the Community **
-      </Body>
-      <Actions>
+      </div>
+      <div className="flex-1 flex gap-2">
         <Button
           text="Generate Image"
           flex
@@ -129,8 +91,8 @@ const GenerateImageForm = ({
           }
           onClick={() => createPostFun()}
         />
-      </Actions>
-    </Form>
+      </div>
+    </div>
   );
 };
 
