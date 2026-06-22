@@ -12,7 +12,7 @@ const GeneratedImageCard = ({ src, loading }) => {
           Generating Your Image . . .
         </>
       ) : src ? (
-        <img src={src} className="w-full h-full bg-[#00000050] rounded-[18px] object-cover" />
+        <img src={src} alt="Generated" className="w-full h-full bg-[#00000050] rounded-[18px] object-cover" />
       ) : (
         <>Write a prompt to generate image</>
       )}
