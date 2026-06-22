@@ -1,46 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const Label = styled.label`
-  font-size: 12px;
-  color: ${({ theme }) => theme.text_secondary};
-  padding: 0px 4px;
-  text-transform: uppercase;
-`;
-
-const OutlinedInput = styled.div`
-  border-radius: 8px;
-  border: 0.5px solid ${({ theme }) => theme.text_secondary + 70};
-  background-color: transparent;
-  color: ${({ theme }) => theme.text_secondary};
-  outline: none;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  &:focus-within {
-    border-color: ${({ theme }) => theme.primary};
-  }
-`;
-
-const Input = styled.input`
-  width: 100%;
-  font-size: 14px;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  color: ${({ theme }) => theme.text_secondary};
-  &:focus {
-    outline: none;
-  }
-`;
 
 const TextInput = ({
   label,
@@ -53,20 +11,31 @@ const TextInput = ({
   columns,
 }) => {
   return (
-    <Container>
-      <Label>{label}</Label>
-      <OutlinedInput>
-        <Input
-          as={textArea ? "textarea" : "input"}
-          name={name}
-          rows={rows}
-          columns={columns}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => handelChange(e)}
-        />
-      </OutlinedInput>
-    </Container>
+    <div className="flex-1 flex flex-col gap-1">
+      <label className="text-xs text-[var(--text_secondary)] px-1 uppercase">
+        {label}
+      </label>
+      <div className="rounded-[8px] bg-transparent text-[var(--text_secondary)] p-3.5 flex items-center gap-3 border-[0.5px] border-solid border-[rgba(var(--text_secondary-rgb),0.44)] focus-within:border-[var(--primary)]">
+        {textArea ? (
+          <textarea
+            className="w-full text-sm outline-none border-none bg-transparent text-[var(--text_secondary)] focus:outline-none"
+            name={name}
+            rows={rows}
+            placeholder={placeholder}
+            value={value}
+            onChange={(e) => handelChange(e)}
+          />
+        ) : (
+          <input
+            className="w-full text-sm outline-none border-none bg-transparent text-[var(--text_secondary)] focus:outline-none"
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={(e) => handelChange(e)}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 
