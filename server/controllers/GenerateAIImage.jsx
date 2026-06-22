@@ -22,7 +22,7 @@ export const generateAIImage = async (req, res, next) => {
             response_format: "b64_json",
         });
         const image = response.data.data[0].b64_json;
-        res.status(200).json({ success: true, data: image });
+        return res.status(200).json({ success: true, data: image });
     } catch (error) {
         next(createError(
             error.status || 500,
