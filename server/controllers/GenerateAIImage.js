@@ -1,29 +1,29 @@
 import * as dotenv from 'dotenv';
 import { createError } from '../error.js';
-import OpenAI from "openai";
+import fetch from 'node-fetch';
 
 dotenv.config();
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+export const generateAIImage = async (req, res, next) => {
+    try {
+        const { prompt } = req.body;
+        const response = await fetch(
+            "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
+            {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ inputs: prompt }),
+            }
+        );
 
-export const generateImage = async (req, res, next) => {
-  try {
-    const { prompt } = req.body;
+        const buffer = await response.arrayBuffer();
+        const base64 = Buffer.from(buffer).toString("base64");
+        return res.status(200).json({ success: true, photo: base64 });
 
-    const response = await openai.images.generate({
-      prompt,
-      n: 1,
-      size: "1024x1024",
-      response_format: "b64_json",
-    });
-    const generatedImage = response.data[0].b64_json;
-    res.status(200).json({ photo: generatedImage });
-  } catch (error) {
-    next(
-      createError(
-        error.status,
-        error?.response?.data?.error.message || error.message
-      )
-    );
-  }
-};
+    } catch (error) {
+        next(createError(500, error.message || 'Failed to generate image'));
+    }
+}
