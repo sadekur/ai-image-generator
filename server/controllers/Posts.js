@@ -18,8 +18,8 @@ export const getPosts = async (req, res, next) => {
         res.status(200).json({ success: true, data: posts });
     } catch (error) {
         next(createError(
-            error.status,
-            error?.response?.data?.error?.message || 500, error.message || 'Failed to fetch posts'));
+            error.status || 500,
+            error?.response?.data?.error?.message || error.message || 'Failed to fetch posts'));
     }
 }
 
@@ -31,7 +31,7 @@ export const createPost = async (req, res, next) => {
         res.status(201).json({ success: true, data: newPost });
     } catch (error) {
         next(createError(
-            error.status,
-            error?.response?.data?.error?.message || 500, error.message || 'Failed to create post'));
+            error.status || 500,
+            error?.response?.data?.error?.message || error.message || 'Failed to create post'));
     }
 }
