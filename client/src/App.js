@@ -5,7 +5,7 @@ import CreatePost from "./pages/CreatePost";
 
 function App() {
   return (
-    <div data-theme="dark" className="w-full h-screen flex bg-[var(--bg)] text-[var(--text_primary)] overflow-x-hidden overflow-y-hidden transition-all duration-200 ease">
+    <div data-theme="dark" className="w-full h-screen flex bg-[var(--bg)] text-white overflow-x-hidden overflow-y-hidden transition-all duration-200 ease">
       <div className="h-full relative flex flex-col justify-between flex-[3]">
         <BrowserRouter>
           <Navbar />
