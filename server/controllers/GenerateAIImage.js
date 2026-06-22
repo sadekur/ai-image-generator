@@ -10,7 +10,7 @@ export const generateAIImage = async (req, res, next) => {
     try {
         const { prompt } = req.body;
         const response = await openai.images.generate({
-            model: "dall-e-3",
+            model: "dall-e-3",       // ← add this
             prompt,
             n: 1,
             size: "1024x1024",
