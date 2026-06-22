@@ -13,6 +13,9 @@ export const generateAIImage = async (req, res, next) => {
 
         // Fetch the image and convert to base64
         const response = await fetch(imageUrl);
+        if (!response.ok) {
+            return next(createError(502, `Pollinations API returned ${response.status}`));
+        }
         const buffer = await response.arrayBuffer();
         const base64 = Buffer.from(buffer).toString("base64");
 
